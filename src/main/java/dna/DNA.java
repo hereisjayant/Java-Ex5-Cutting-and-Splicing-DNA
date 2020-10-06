@@ -14,7 +14,8 @@ public class DNA {
     private static final double PROTEIN_N_MASS_THRESHOLD = 0.3;
     private static final int CODON_LENGTH = 3;
     private static final double JUNK_MASS = 100.000;
-    private static double mass;
+    private double mass;
+
 
     /*
     Where we do some initialization for the entire class,
