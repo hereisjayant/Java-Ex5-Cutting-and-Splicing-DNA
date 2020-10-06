@@ -376,7 +376,7 @@ public class DNA {
         point.
          */
         int i = 0;
-        while (i < seqNoJunk.length() - restrictionEnzyme.length()) {
+        while (i < seqNoJunk.length()) {
             boolean enzymeMatch = false;
             for (int j = 0; j < restrictionEnzyme.length(); j++) {
                 enzymeMatch = true;
@@ -390,7 +390,7 @@ public class DNA {
             if (enzymeMatch) {
                 newSeqBuilder.append(seqNoJunk.substring(i, i + splicePosition));
                 newSeqBuilder.append(splicee);
-                newSeqBuilder.append(seqNoJunk.substring(i + splicePosition));
+                newSeqBuilder.append(seqNoJunk.substring(i + splicePosition, i + restrictionEnzyme.length()));
                 i = i + restrictionEnzyme.length();
             }
         }
