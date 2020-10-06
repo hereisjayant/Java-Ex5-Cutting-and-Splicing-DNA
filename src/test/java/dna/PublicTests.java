@@ -100,6 +100,8 @@ public class PublicTests {
         DNA dna13 = new DNA("ATCGGGCATGTAGGGCAT");
         DNA expected = new DNA("ATCGGATTGATGCATGTAGGATTGATGCAT");
         DNA actual = dna13.cutAndSplice("GGGCAT", 2, "ATTGAT");
+        System.out.println(expected.sequence());
+        System.out.println(actual.sequence());
         assertEquals(expected, actual);
     }
 }

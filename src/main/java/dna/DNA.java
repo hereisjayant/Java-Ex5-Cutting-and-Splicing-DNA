@@ -1,9 +1,9 @@
 package dna;
 
-import java.util.Map;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class DNA {
 
@@ -14,6 +14,7 @@ public class DNA {
     private static final double PROTEIN_N_MASS_THRESHOLD = 0.3;
     private static final int CODON_LENGTH = 3;
     private static final double JUNK_MASS = 100.000;
+    private static double mass;
 
     /*
     Where we do some initialization for the entire class,
@@ -42,15 +43,15 @@ public class DNA {
     private String sequence;
     private Set<String> codons;
     private Map<Character, Double> nucleotideMass = new HashMap<>();
-    private static double mass;
     private boolean protein;
     private Map<Character, Integer> nucleotideCountMap = new HashMap<>();
 
     /**
      * Create new DNA given a nucleotide sequence.
+     *
      * @param dnaSequence
      * @throws IllegalArgumentException if <code>dnaSequence</code> is invalid.
-     * A sequence is invalid if it contains nothing or an incomplete codon.
+     *                                  A sequence is invalid if it contains nothing or an incomplete codon.
      */
     public DNA(String dnaSequence) throws IllegalArgumentException {
 
@@ -181,7 +182,7 @@ public class DNA {
         }
 
         double cgmass = 0.0;
-        for (Character c: PROTEIN_NUCLEOTIDES) {
+        for (Character c : PROTEIN_NUCLEOTIDES) {
             if (nucleotideMass.get(c) != null) {
                 cgmass += nucleotideMass.get(c);
             }
@@ -303,6 +304,7 @@ public class DNA {
 
     /**
      * Checks if a String represents an enzyme.
+     *
      * @param enzyme
      * @return true if the string is an enzyme and false otherwise.
      */
@@ -315,7 +317,7 @@ public class DNA {
             return false;
         }
 
-        for (char c: enzyme.toCharArray()) {
+        for (char c : enzyme.toCharArray()) {
             if (!NUCLEOTIDE_MASS.containsKey(c)) {
                 return false;
             }
@@ -329,20 +331,19 @@ public class DNA {
      * This operation also removes all junk. If the restriction enzyme is not
      * found in the DNA sequence then the DNA sequence created is identical to
      * the original sequence without any junk.
-     *
+     * <p>
      * See the exercise spec for details about the cut-and-splice operation.
      *
      * @param restrictionEnzyme is not null, not "", and is a sequence of codons with no junk.
      *                          This is the codon sequence that will be cleaved.
-     * @param splicePosition is the position within the restriction enzyme
-     *                       where the splicee is added.
-     *                       0 < splicePosition < length of restriction enzyme.
-     * @param splicee is not null, not "", and is a sequence of codons with no junk.
-     *                This is the enzyme to splice in to the DNA sequence
-     *                where the restriction enzyme is cleaved.
+     * @param splicePosition    is the position within the restriction enzyme
+     *                          where the splicee is added.
+     *                          0 < splicePosition < length of restriction enzyme.
+     * @param splicee           is not null, not "", and is a sequence of codons with no junk.
+     *                          This is the enzyme to splice in to the DNA sequence
+     *                          where the restriction enzyme is cleaved.
      * @return DNA object created by the cut-and-splice operation.
      * @throws IllegalArgumentException
-     *
      */
     public DNA cutAndSplice(String restrictionEnzyme, int splicePosition, String splicee) {
 
@@ -359,7 +360,7 @@ public class DNA {
         /*
         Let us eliminate the junk first
          */
-        for (char c: sequence.toCharArray()) {
+        for (char c : sequence.toCharArray()) {
             if (NUCLEOTIDE_MASS.containsKey(c)) {
                 newSeqBuilder.append(c);
             }
@@ -396,5 +397,23 @@ public class DNA {
 
         return new DNA(newSeqBuilder.toString());
 
+    }
+
+    // Overriding equals() to compare two DNA objects
+    @Override
+    public boolean equals(Object o) {
+
+        // If the object is compared with itself then return true
+        if (o == this) {
+            return true;
+        }
+
+        if (!(o instanceof DNA)) {
+            return false;
+        }
+
+
+        // Compare the data members and return accordingly
+        return this.sequence().equals(((DNA) o).sequence);
     }
 }
