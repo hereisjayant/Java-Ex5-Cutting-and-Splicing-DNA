@@ -1,4 +1,3 @@
-**CPEN 221 / Fall 2020 / Exercise 5**
 
 # Cutting and Splicing DNA
 
@@ -26,7 +25,7 @@ The reading material on `static` alone is insufficient to help you debug both pr
 
 The new operation that you will have to understand is a cut-and-splice operation. For this operation, you are given a sequence of codons (without junk) called a **restriction enzyme** and a **splice position**. You are also given a **splicee**, which is another enzyme (sequence of codons, no junk).
 
-The cut-and-splice operation finds all occurrences of the restriction enzyme in a DNA sequence. Then, it splits the DNA sequence at the splice position, which is a position in the matching site for the restriction enzyme, and inserts the splicee at that position, and then stitches back the rest of the DNA sequence to the end of the splicee. 
+The cut-and-splice operation finds all occurrences of the restriction enzyme in a DNA sequence. Then, it splits the DNA sequence at the splice position, which is a position in the matching site for the restriction enzyme, and inserts the splicee at that position, and then stitches back the rest of the DNA sequence to the end of the splicee.
 
 This operation **also** removes all junk in the DNA sequence. If the restriction enzyme is not present in a DNA sequence then this operation simply cleans the DNA sequence of all junk.
 
@@ -39,7 +38,7 @@ For this exercise, we have assumed that enzymes are codon sequences. This not st
 
 - **Restriction Enzyme Cleaving**
 
-    Restriction enzymes cut a strand of DNA at a specific location, the *binding site*, typically separating the DNA strand into two pieces. 
+    Restriction enzymes cut a strand of DNA at a specific location, the *binding site*, typically separating the DNA strand into two pieces.
 
     Given a strand of DNA "*aatccgaattcgtatc*" and a restriction enzyme like EcoRI "*gaattc*", the restriction enzyme locates each occurrence of its pattern in the DNA strand and divides the strand into two pieces at that point, leaving either blunt or sticky ends.
 
@@ -58,8 +57,3 @@ For this exercise, we have assumed that enzymes are codon sequences. This not st
 [Three scientists shared the Nobel Prize](http://nobelprize.org/nobel_prizes/medicine/laureates/1978/press.html) in 1978 for the discover of restriction enzymes. They are also an essential part of the process called [PCR *polymerase chain reaction*](http://en.wikipedia.org/wiki/Polymerase_chain_reaction) which is one of the most significant discoveries/inventions in chemistry and for which [Kary Mullis won the Nobel Prize in 1993.](http://nobelprize.org/nobel_prizes/chemistry/laureates/1993/press.html) Of significance to us in Vancouver, Mullis shared the Nobel Prize that year with Michael Smith, who was a Professor at UBC. Their work laid the foundation for genetic engineering.
 
 You can see animations and explanations of both restriction enzymes and PCR at [DnaTube](http://www.dnatube.com/search_result.php?search_id=restriction) and [Cold Spring Harbor Dolan DNA Learning Center](http://www.dnalc.org/ddnalc/resources/restriction.html).
-
-## Submitting Your Work
-
-You will submit your work by making changes, committing your work and pushing to GitHub. You must get comfortable with the basic workflow using Git and GitHub. Not being able to push your work to GitHub is not a reasonable excuse for late submissions.
-
